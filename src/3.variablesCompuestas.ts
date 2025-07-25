@@ -15,6 +15,8 @@ let catalogo: Producto[] = [
 //Acceder a un valor 
 let primero = frutas[0]; // "manzana"
 
+//Actualizar un valor 
+numeros[1] = Math.pow(2, 3); // 8
 //Actualizar un valor
 frutas.push("uva"); // ["manzana", "banana", "pera", "uva"]
 numeros.push(5); // [1, 2, 3, 4, 5]
@@ -44,6 +46,7 @@ enum Color{
     Azul
 }
 let c: Color = Color.Verde;
+console.log(c);
 
 enum Estado {
     Activo = "ACTIVO",
@@ -56,6 +59,19 @@ let usuario:
     nombre: string;
     edad: number
 } = {
-    nombre: "Fernanda",
+    nombre: "Jose",
     edad: 30 
 };
+
+
+/**
+ * Metodos para usar con arreglos
+ * push()
+ * pop()
+ * shitf()
+ * unshift()
+ * map()
+ * filter()
+ * find()
+ * forEach()
+ */

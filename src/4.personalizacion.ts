@@ -32,7 +32,7 @@ interface Product {
     readonly id: number; //readonly evita que se modifique una propiedad despues de asignarla
     nombre: string; 
     precio: number;
-    descuento?: number; //usa ? para indicar que una propiedad puede o no estar presente
+    descuento?: number; //usa ? para indicar que una propiedad puede o no estar presente o no sea obligatoria
     comprar: (cantidad: number)=> number; 
     baja: () => void;
     actualizar(): boolean;
