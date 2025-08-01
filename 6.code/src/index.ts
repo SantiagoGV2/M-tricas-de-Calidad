@@ -1,5 +1,5 @@
-import app from './app';
-import { ServerBootstrap } from './bootstrap/server-bootstrap';
+import app from './infraestructure/web/app';
+import { ServerBootstrap } from './infraestructure/bootstrap/server-bootstrap';
 
 const server = new ServerBootstrap(app);
 /** 
