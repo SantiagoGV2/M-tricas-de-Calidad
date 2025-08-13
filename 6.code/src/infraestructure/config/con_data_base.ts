@@ -1,15 +1,15 @@
-import dotenv from "dotenv";
+import envs from "../config/enviroment-vars";
 import { DataSource } from "typeorm";
 import { UserEntity } from "../entities/UserEntity";
-dotenv.config();
+
 
 export const AppDataSource = new DataSource({
     type: "mysql",
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT),
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+    host: envs.DB_HOST,
+    port: Number(envs.DB_PORT),
+    username: envs.DB_USER,
+    password: envs.DB_PASSWORD,
+    database: envs.DB_NAME,
     synchronize: true,
     logging: true,
     entities:[UserEntity]
