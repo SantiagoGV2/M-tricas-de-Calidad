@@ -132,7 +132,7 @@ export class UserController {
             if (email && !/^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/.test(email.trim()))
                 return response.status(400).json({ message: "Correo electrónico no válido" });
  
-            if (password && !/^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{6,}$/.test(password.trim()))
+            if (password && !/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,25}$/.test(password.trim()))
                 return response
                     .status(400)
                     .json({
