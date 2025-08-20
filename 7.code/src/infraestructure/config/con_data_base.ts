@@ -4,12 +4,13 @@ import { UserEntity } from "../entities/UserEntity";
 
 
 export const AppDataSource = new DataSource({
-    type: "mysql",
+    type: "postgres",
     host: envs.DB_HOST,
     port: Number(envs.DB_PORT),
     username: envs.DB_USER,
     password: envs.DB_PASSWORD,
     database: envs.DB_NAME,
+    schema: envs.DB_SCHEMA,
     synchronize: true,
     logging: true,
     entities:[UserEntity]

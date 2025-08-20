@@ -8,6 +8,7 @@ export type ReturnEnviromentVars = {
    DB_USER: string;
    DB_PASSWORD: string;
    DB_NAME :string;
+   DB_SCHEMA: string;
  }
 type ValidationEnviromentVars = {
    error: joi.ValidationError | undefined;
@@ -21,7 +22,8 @@ function validateEnVars(vars: NodeJS.ProcessEnv): ValidationEnviromentVars {
       DB_PORT: joi.number().default(3306),
       DB_USER: joi.string().required(),
       DB_PASSWORD: joi.string().allow("").optional(),
-      DB_NAME: joi.string().required()
+      DB_NAME: joi.string().required(),
+      DB_SCHEMA: joi.string().required()
    }).unknown(true);
    const { error, value } = envSchem.validate(vars);
    return { error, value }
@@ -40,7 +42,8 @@ const loadEnvVars = (): ReturnEnviromentVars => {
       DB_PORT: value.DB_PORT,
       DB_USER: value.DB_USER,
       DB_PASSWORD: value.DB_PASSWORD,
-      DB_NAME: value.DB_NAME
+      DB_NAME: value.DB_NAME,
+      DB_SCHEMA: value.DB_SCHEMA
    }
 }
 const envs = loadEnvVars();
