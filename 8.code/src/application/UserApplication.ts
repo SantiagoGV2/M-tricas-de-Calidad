@@ -30,6 +30,8 @@ export class UserApplication{
     async createUser(user:Omit<User,"id">): Promise<number>{
         const existingUser = await this.port.getUserByEmail(user.email);
         if(!existingUser){
+            const hashedPassword = await bcrypt.hash(user.password, 10);
+            user.password = hashedPassword; 
             return await this.port.createUser(user);
         }
         throw new Error("El usuario ya existe");

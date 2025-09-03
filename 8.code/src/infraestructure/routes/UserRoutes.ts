@@ -2,6 +2,7 @@ import { request, response, Router } from "express";
 import { UserAdapter } from '../adapter/UserAdapter';
 import { UserApplication } from "../../application/UserApplication";
 import { UserController } from '../controller/UserController';
+import { authenticateToken } from '../web/authMiddleware';
 
 
 //Express
@@ -30,7 +31,7 @@ router.post("/users", async (request, response) =>{
     }
 });
 
-router.get("/users", async (request, response) =>{
+router.get("/users", authenticateToken, async (request, response) =>{
     try {
         await userController.allUsers(request, response);
     } catch (error) {
@@ -38,7 +39,7 @@ router.get("/users", async (request, response) =>{
         response.status(400).json({message: "Error al obtener los usuarios"});
     }
 });
-router.get("/users/:id", async (request, response) =>{
+router.get("/users/:id", authenticateToken, async (request, response) =>{
     try {
         await userController.searchUserById(request, response);
     } catch (error) {
@@ -47,7 +48,7 @@ router.get("/users/:id", async (request, response) =>{
     }
 });
 
-router.get("/users/email/:email", async (request, response) =>{
+router.get("/users/email/:email", authenticateToken, async (request, response) =>{
     try {
         await userController.searchUserByEmail(request, response);
     } catch (error) {
@@ -56,7 +57,7 @@ router.get("/users/email/:email", async (request, response) =>{
     }
 });
 
-router.put("/usersA/:id", async (request, response) =>{
+router.put("/usersA/:id", authenticateToken, async (request, response) =>{
     try {
         await userController.updateUser(request, response);
     } catch (error) {
@@ -66,7 +67,7 @@ router.put("/usersA/:id", async (request, response) =>{
 });
 
 
-router.delete("/users/:id", async (request, response) =>{
+router.delete("/users/:id", authenticateToken, async (request, response) =>{
     try {
         await userController.downdUser(request, response);
     } catch (error) {
